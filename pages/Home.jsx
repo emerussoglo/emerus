@@ -67,10 +67,10 @@ export default function Home() {
         <button 
           onClick={toggleAudio} 
           className={`audio-btn ${isPlaying ? 'playing' : ''}`}
-          aria-label="Écouter le message vocal"
+          aria-label="Écouter"
         >
           <i className={`fa-solid ${isPlaying ? 'fa-pause' : 'fa-play'}`}></i>
-          <span>{isPlaying ? 'Mettre en pause' : 'Écouter mon message'}</span>
+          <span>{isPlaying ? 'Pause' : 'Écouter'}</span>
         </button>
 
         {/* Onde sonore / Courbe d'égaliseur */}

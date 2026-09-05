@@ -246,7 +246,7 @@ a {
 /* --- Adaptation Mobile & Tablette (Flèches parfaitement orientées) --- */
 @media (max-width: 900px) {
   .hero-container {
-    padding: 1rem;
+    padding: 0.5rem;
   }
 
   .polaroid-img {
@@ -255,23 +255,23 @@ a {
   }
 
   .bg-watermark {
-    font-size: 3.5rem;
+    font-size: 3rem;
   }
 
   /* Repositionnement des éléments */
   .badge-travaux {
-    top: 8%;
-    left: 8%;
+    top: 12%;
+    left: 9%;
   }
 
   .badge-apropos {
-    top: 8%;
-    right: 8%;
+    top: 11%;
+    right: 10%;
   }
 
   .badge-contact {
-    bottom: 8%;
-    right: 6%;
+    bottom: 13%;
+    right: 5%;
   }
 
   .sticky-note {
@@ -379,13 +379,16 @@ a {
   border: none;
   display: flex;
   align-items: center;
+  justify-content: center;
+  text-align: center;
   gap: 8px;
   font-family: var(--font-family);
   font-weight: 700;
-  font-size: 0.82rem;
+  font-size: 0.7rem;
   color: var(--accent-color);
   cursor: pointer;
   transition: var(--transition);
+
 }
 
 .audio-btn i {
@@ -397,6 +400,7 @@ a {
   border-radius: 50%;
   display: flex;
   align-items: center;
+  text-align: center;
   justify-content: center;
 }
 
@@ -408,7 +412,7 @@ a {
 .waveform-container {
   display: flex;
   align-items: center;
-  gap: 3px;
+  gap: 2px;
   height: 18px;
 }
 
@@ -441,8 +445,8 @@ a {
 /* Adaptation Mobile du lecteur Audio */
 @media (max-width: 900px) {
   .audio-player-badge {
-    top: 3%;
-    padding: 6px 14px;
+    top: 2%;
+    padding: 6px 18px;
   }
 
   .audio-btn {
