@@ -16,6 +16,8 @@ export default function Home() {
   // États pour le lecteur audio
   const [isPlaying, setIsPlaying] = useState(false);
   const audioRef = useRef(null);
+  const audioCtxRef = useRef(null);
+  const gainNodeRef = useRef(null);
 
   // Animation des métiers
   useEffect(() => {
@@ -30,6 +32,29 @@ export default function Home() {
     return () => clearInterval(interval);
   }, [roles.length]);
 
+  // Initialisation du Web Audio API pour booster le volume
+  const setupAudioAmplifier = () => {
+    if (!audioCtxRef.current && audioRef.current) {
+      const AudioContext = window.AudioContext || window.webkitAudioContext;
+      const ctx = new AudioContext();
+      const source = ctx.createMediaElementSource(audioRef.current);
+      const gainNode = ctx.createGain();
+
+      // Ajuste le multiplicateur ici (ex: 2.0 = 200%, 3.0 = 300%)
+      gainNode.gain.value = 2.0; 
+
+      source.connect(gainNode);
+      gainNode.connect(ctx.destination);
+
+      audioCtxRef.current = ctx;
+      gainNodeRef.current = gainNode;
+    }
+
+    if (audioCtxRef.current && audioCtxRef.current.state === 'suspended') {
+      audioCtxRef.current.resume();
+    }
+  };
+
   // Gestion Play / Pause Audio
   const toggleAudio = () => {
     if (!audioRef.current) return;
@@ -38,6 +63,7 @@ export default function Home() {
       audioRef.current.pause();
       setIsPlaying(false);
     } else {
+      setupAudioAmplifier();
       audioRef.current.play();
       setIsPlaying(true);
     }
